@@ -19,25 +19,25 @@ const Registration = () => {
                                         <label className="label">
                                             <span className="label-text text-white">Name</span>
                                         </label>
-                                        <input type="text" placeholder="name" name="name" className="input input-bordered" required />
+                                        <input type="text" placeholder="name" name="name" className="input input-bordered text-[#55AA39]" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text text-white">Photo URL</span>
                                         </label>
-                                        <input type="text" placeholder="photo url" name="photoURL" className="input input-bordered" required />
+                                        <input type="text" placeholder="photo url" name="photoURL" className="input input-bordered text-[#55AA39]" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text text-white">Email</span>
                                         </label>
-                                        <input  type="email" placeholder="email" name="email" className="input input-bordered" required />
+                                        <input  type="email" placeholder="email" name="email" className="input input-bordered text-[#55AA39]" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text text-white">Password</span>
                                         </label>
-                                        <input  type="password" placeholder="password" name="password" className="input input-bordered" required />
+                                        <input  type="password" placeholder="password" name="password" className="input input-bordered text-[#55AA39]" required />
                                     </div>
                                     {/* <p className="text-red-500">{error}</p> */}
                                     <div className="form-control mt-6">

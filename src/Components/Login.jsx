@@ -21,13 +21,13 @@ const Login = () => {
                                             <span className="label-text text-white">Email</span>
                                         </label>
 
-                                        <input type="email" placeholder="email" name="email" className="input input-bordered text-black" required />
+                                        <input type="email" placeholder="email" name="email" className="input input-bordered text-[#55AA39]" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text text-white">Password</span>
                                         </label>
-                                        <input type="password" placeholder="password" name="password" className="input input-bordered text-black" required />
+                                        <input type="password" placeholder="password" name="password" className="input input-bordered text-[#55AA39]" required />
                                         <label className="label">
                                             <a href="#" className="label-text-alt link  text-white">Forgot password?</a>
                                         </label>

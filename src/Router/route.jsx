@@ -5,6 +5,7 @@ import Home from '../Components/Home'
 import Login from '../Components/Login';
 import Registration from '../Components/Registration';
 import AllService from '../Components/AllService';
+import OneServiceDetails from '../Components/DynamicPage/OneServiceDetails';
 
 const route = createBrowserRouter([
     {
@@ -26,6 +27,12 @@ const route = createBrowserRouter([
             {
                 path: "/all-service",
                 element: <AllService></AllService>
+            },
+            {
+                path: "/all-service/:id",
+                element: <OneServiceDetails></OneServiceDetails>,
+                loader: ({params})=> fetch(`http://localhost:5001/services/${params.id}`)
+                
             }
         ]
     }

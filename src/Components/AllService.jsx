@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import SingleCard from './SingleCard';
-import { NavLink } from 'react-router-dom';
 
-const HomeService = () => {
+const AllService = () => {
 
     const [services, setServices] = useState([])
 
     useEffect(() => {
         fetch('service.json')
             .then(res => res.json())
-            .then(data => setServices(data.slice(0, 4)))
+            .then(data => setServices(data))
     }, [])
     return (
-        <div className='max-w-screen-xl mx-auto'>
+        <div>
             <div className='grid gap-4 text-center'>
                 <p className='text-xl'>MIAMI RESIDENTIAL PEST CONTROL</p>
                 <p className='text-3xl text-[#55A839] font-bold'>Pest Control Services</p>
@@ -26,13 +25,8 @@ const HomeService = () => {
 
                 }
             </div>
-            <div className='max-w-screen-xl mx-auto text-center'>
-                <NavLink to={"/all-service"}><button className="py-4 bg-[#55A839] w-3/4 mx-auto rounded-lg mt-4 font-extrabold text-white">Check Our All Services</button></NavLink>
-            </div>
-
         </div>
-
     );
 };
 
-export default HomeService;
+export default AllService;

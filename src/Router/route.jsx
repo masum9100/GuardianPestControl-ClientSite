@@ -4,6 +4,7 @@ import MainRoute from './MainRoute';
 import Home from '../Components/Home'
 import Login from '../Components/Login';
 import Registration from '../Components/Registration';
+import AllService from '../Components/AllService';
 
 const route = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const route = createBrowserRouter([
             {
                 path: "/registration",
                 element: <Registration></Registration>
+            },
+            {
+                path: "/all-service",
+                element: <AllService></AllService>
             }
         ]
     }

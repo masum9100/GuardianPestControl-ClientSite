@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const SingleCard = ({ service }) => {
     const { name, short_description, image1, price, service_provider_name, service_provider_image, bg_image } = service
@@ -19,7 +20,7 @@ const SingleCard = ({ service }) => {
                         <p className='text-center bg-[#55A839] rounded-b-2xl py-2'>Price: ${price}</p>
                     </div>
                 </div>
-                <button className="py-2 bg-[#55A839] w-3/4 mx-auto rounded-lg mt-2">See Details</button>
+                <NavLink to={`/${name}`}><button className="py-2 bg-[#55A839] w-full mx-auto rounded-lg mt-2">See Details</button></NavLink>
             </div>
         </div>
     );

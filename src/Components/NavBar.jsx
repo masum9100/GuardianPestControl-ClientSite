@@ -51,7 +51,7 @@ const NavBar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <NavLink to={"/"}><li><a>Home</a></li></NavLink>
-                            <li><a>All Service</a></li>
+                            <NavLink to={"/all-service"}><li><a>All Service</a></li></NavLink>
                             <li><a>FAQS</a></li>
                             <li><a>Contact Us</a></li>
                             {user && <li tabIndex={0}>
@@ -74,7 +74,7 @@ const NavBar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                     <NavLink to={"/"}><li><a>Home</a></li></NavLink>
-                        <li><a>All Service</a></li>
+                    <NavLink to={"/all-service"}><li><a>All Service</a></li></NavLink>
                         <li><a>FAQS</a></li>
                         <li><a>Contact Us</a></li>
                         {user && <li tabIndex={0}>
@@ -91,10 +91,10 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                <div className='grid grid-cols-1 justify-center'>
-                        <img className='w-8 rounded-full mx-auto' src={user?.photoURL} alt="" />
+                {user && <div className='grid grid-cols-1 justify-center'>
+                        <img className='w-8 rounded-full mx-auto' src={user?.photoURL} alt="user" />
                         <p className="mr-1 text-black">{user?.email}</p>
-                    </div>
+                    </div>}
                     {user && <button onClick={handleLogout} className="px-3 py-2 rounded-lg font-bold bg-[#55AA39] text-white hover:text-black">Log Out</button>}
                     {!user && <NavLink to="/login"><button className="px-3 py-2 rounded-lg font-bold bg-[#55AA39] text-white hover:text-black">LogIn</button></NavLink>}
                     

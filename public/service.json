@@ -1,6 +1,6 @@
 [
     {
-      "id": 1,
+      "service_id": 1,
       "name": "ROACHES",
       "short_description": "Effective roach extermination for a pest-free environment.",
       "details1": "Our ROACHES service utilizes advanced techniques and eco-friendly products to eradicate roaches from your premises. Our experienced technicians conduct a thorough inspection, identify breeding grounds, and implement a targeted approach to ensure long-lasting results.",
@@ -16,7 +16,7 @@
       "service_provider_email": "info@pestbusters.com"
     },
     {
-      "id": 2,
+      "service_id": 2,
       "name": "RODENT",
       "short_description": "Comprehensive rodent control for a pest-free space.",
       "details1": "Our RODENT service is designed to tackle rodent infestations efficiently. Our skilled technicians conduct a thorough inspection to identify entry points, nesting areas, and potential food sources for rodents.",
@@ -32,7 +32,7 @@
       "service_provider_email": "info@crittercontrol.com"
     },
     {
-      "id": 3,
+      "service_id": 3,
       "name": "SPIDERS",
       "short_description": "Efficient spider extermination for a pest-free living space.",
       "details1": "Our SPIDERS service targets spider infestations with precision. Our experienced technicians conduct a thorough assessment to identify common nesting areas and entry points for spiders.",
@@ -48,7 +48,7 @@
       "service_provider_email": "info@spidersolutions.com"
     },
     {
-      "id": 4,
+      "service_id": 4,
       "name": "FLYING INSECTS",
       "short_description": "Effective flying insect control for a pest-free environment.",
       "details1": "Our FLYING INSECTS service targets flying insect infestations with precision. Our experienced technicians conduct a thorough assessment to identify breeding grounds and entry points for flying insects.",
@@ -64,7 +64,7 @@
       "service_provider_email": "info@buzzoff.com"
     },
     {
-      "id": 5,
+      "service_id": 5,
       "name": "TICKS & FLEAS",
       "short_description": "Comprehensive ticks and fleas control for a pest-free environment.",
       "details1": "Our TICKS & FLEAS service is designed to tackle ticks and fleas infestations efficiently. Our skilled technicians conduct a thorough inspection to identify potential habitats and entry points for ticks and fleas.",
@@ -80,7 +80,7 @@
       "service_provider_email": "info@fleafighters.com"
     },
     {
-      "id": 6,
+      "service_id": 6,
       "name": "ANTS",
       "short_description": "Efficient ant extermination for a pest-free living space.",
       "details1": "Our ANTS service targets ant infestations with precision. Our experienced technicians conduct a thorough assessment to identify common nesting areas and entry points for ants.",

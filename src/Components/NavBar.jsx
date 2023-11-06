@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaPhoneAlt } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from './Hook/AuthProvider';
 
 const NavBar = () => {
+
+    const {user, logOut} = useContext(AuthContext)
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
     const handleTheme = (e) => {
@@ -19,6 +22,10 @@ const NavBar = () => {
         const localTheme = localStorage.getItem("theme")
         document.querySelector("html").setAttribute("data-theme", localTheme)
     }, [theme])
+
+    const handleLogout = () => {
+        logOut().then()
+    }
 
 
     return (
@@ -47,14 +54,16 @@ const NavBar = () => {
                             <li><a>All Service</a></li>
                             <li><a>FAQS</a></li>
                             <li><a>Contact Us</a></li>
-                            <li>
-                                <a>Dashboard</a>
+                            {user && <li tabIndex={0}>
+                            <details>
+                                <summary>Dashboard</summary>
                                 <ul className="p-2 w-40">
                                     <li><a>My-services</a></li>
                                     <li><a>Add-services</a></li>
                                     <li><a>My-schedules</a></li>
                                 </ul>
-                            </li>
+                            </details>
+                        </li>}
 
                         </ul>
                     </div>
@@ -68,7 +77,7 @@ const NavBar = () => {
                         <li><a>All Service</a></li>
                         <li><a>FAQS</a></li>
                         <li><a>Contact Us</a></li>
-                        <li tabIndex={0}>
+                        {user && <li tabIndex={0}>
                             <details>
                                 <summary>Dashboard</summary>
                                 <ul className="p-2 w-40">
@@ -77,12 +86,18 @@ const NavBar = () => {
                                     <li><a>My-schedules</a></li>
                                 </ul>
                             </details>
-                        </li>
+                        </li>}
 
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <NavLink to={"/login"}><a className="px-3 py-2 rounded-lg font-bold bg-[#55AA39] text-white hover:text-black">LogIn</a></NavLink>
+                <div className='grid grid-cols-1 justify-center'>
+                        <img className='w-8 rounded-full mx-auto' src={user?.photoURL} alt="" />
+                        <p className="mr-1 text-black">{user?.email}</p>
+                    </div>
+                    {user && <button onClick={handleLogout} className="px-3 py-2 rounded-lg font-bold bg-[#55AA39] text-white hover:text-black">Log Out</button>}
+                    {!user && <NavLink to="/login"><button className="px-3 py-2 rounded-lg font-bold bg-[#55AA39] text-white hover:text-black">LogIn</button></NavLink>}
+                    
                 </div>
             </div>
             <div className=" flex justify-center">

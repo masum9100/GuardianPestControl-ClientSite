@@ -1,42 +1,73 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from './Hook/AuthProvider';
 
 const Login = () => {
+
+    const { googleSignIn, signIn } = useContext(AuthContext)
+    const [email, setEmail]=useState("")
+    const [password, setPassword]=useState("")
+    const [error, setError]=useState("")
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const handleGoogle = () => {
+        googleSignIn().then(result => {
+            console.log(result.user)
+        })
+    }
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        if ((email, password)) {
+            signIn(email, password)
+            .then((result)=>{
+                console.log(result.user)
+                navigate(location?.state?location.state : '/')
+            }) .catch ((err)=>{
+                setError("Invalid email or password")
+            })
+
+        }
+    }
+
+
     return (
         <div className='mt-10'>
+
             <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://facilityexecutive.com/wp-content/uploads/2016/08/FEJulyAug16-SM-Feature.jpg)' }}>
                 <div className="hero-overlay bg-opacity-90"></div>
 
                 <div className="hero-content text-center text-neutral-content">
-                    
+
                     <div className="max-w-md">
                         <div className=' py-10'>
                             <div className=" w-full mx-auto p-10 ">
                                 <h1 className="text-5xl text-[#55AA39] font-extrabold mb-10">Guardian Pest Control</h1>
                                 <h1 className="text-3xl text-white font-extrabold mb-5">Sign In to Your Account</h1>
                                 <form className="">
-                                    {/* <p className='text-red-500'>{error}</p> */}
+                                    <p className='text-red-500'>{error}</p>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text text-white">Email</span>
                                         </label>
 
-                                        <input type="email" placeholder="email" name="email" className="input input-bordered text-[#55AA39]" required />
+                                        <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email" name="email" className="input input-bordered text-[#55AA39]" required />
                                     </div>
                                     <div className="form-control">
                                         <label className="label">
                                             <span className="label-text text-white">Password</span>
                                         </label>
-                                        <input type="password" placeholder="password" name="password" className="input input-bordered text-[#55AA39]" required />
+                                        <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" name="password" className="input input-bordered text-[#55AA39]" required />
                                         <label className="label">
                                             <a href="#" className="label-text-alt link  text-white">Forgot password?</a>
                                         </label>
                                     </div>
                                     <div className="form-control mt-6">
-                                        <button className=" py-2 rounded-md bg-[#55AA39] text-white">Sign In</button>
+                                        <button onClick={handleLogin} className=" py-2 rounded-md bg-[#55AA39] text-white">Sign In</button>
                                     </div>
                                     <div>
-                                        <button className="flex justify-center items-center mx-auto mt-10 bg-white rounded-full px-8 py-4 text-black">
+                                        <button onClick={handleGoogle} className="flex justify-center items-center mx-auto mt-10 bg-white rounded-full px-8 py-4 text-black">
                                             <svg width="24" height="25" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M45.1381 17.9527H43.3399V17.86H23.2474V26.79H35.8643C34.0236 31.9884 29.0775 35.72 23.2474 35.72C15.85 35.72 9.85236 29.7224 9.85236 22.325C9.85236 14.9276 15.85 8.93 23.2474 8.93C26.662 8.93 29.7685 10.2182 32.1338 12.3223L38.4485 6.00766C34.4612 2.29166 29.1278 0 23.2474 0C10.9184 0 0.922363 9.99602 0.922363 22.325C0.922363 34.654 10.9184 44.65 23.2474 44.65C35.5763 44.65 45.5724 34.654 45.5724 22.325C45.5724 20.8281 45.4183 19.3669 45.1381 17.9527Z" fill="#FFC107" />
                                                 <path d="M3.49633 11.9338L10.8312 17.313C12.8159 12.3993 17.6226 8.93 23.2474 8.93C26.662 8.93 29.7685 10.2182 32.1338 12.3223L38.4485 6.00766C34.4612 2.29166 29.1278 0 23.2474 0C14.6723 0 7.23577 4.84118 3.49633 11.9338Z" fill="#FF3D00" />

@@ -38,7 +38,7 @@ const route = createBrowserRouter([
             {
                 path:"/my-bookings",
                 element: <PrivateRoute><BookingPage></BookingPage></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5001/bookings?userEmail=${params.userEmail}`)
+                // loader: ({params})=> fetch(`http://localhost:5001/bookings?userEmail=${params.userEmail}`)
             }
         ]
     }

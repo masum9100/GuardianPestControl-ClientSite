@@ -81,7 +81,7 @@ const NavBar = () => {
                             <details>
                                 <summary>Dashboard</summary>
                                 <ul className="p-2 w-40">
-                                    <NavLink to={'/my-bookings'}><li><a>My-Booking</a></li></NavLink>
+                                    <NavLink to={`/my-bookings`}><li><a>My-Booking</a></li></NavLink>
                                     <li><a>Add-services</a></li>
                                     <li><a>My-schedules</a></li>
                                 </ul>

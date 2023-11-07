@@ -1,0 +1,19 @@
+import React from 'react';
+
+const TableBook = ({booking}) => {
+    const {} = booking;
+    
+    return (
+        <tr>
+            
+            <td></td>
+            <td>Quality Control Specialist</td>
+            <td>Littel, Schaden and Vandervort</td>
+            <td>Canada</td>
+            <td>12/16/2020</td>
+            <td>Blue</td>
+        </tr>
+    );
+};
+
+export default TableBook;

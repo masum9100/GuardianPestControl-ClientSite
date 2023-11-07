@@ -7,7 +7,7 @@ const OneServiceDetails = () => {
 
     const service = useLoaderData()
 
-    const { name, short_description, details1, details2, details3, image2, image3, price, service_provider_name, service_provider_image, service_provider_email } = service
+    const { name, short_description, details1, details2, details3, image1, image2, image3, price, service_provider_name, service_provider_image, service_provider_email } = service
 
     const heroStyle = {
         backgroundImage: `url(${image2})`,
@@ -53,7 +53,57 @@ const OneServiceDetails = () => {
                 </div>
             </div>
             <div className='max-w-screen-xl text-center'>
-            <button className='bg-[#55AA39] text-white font-extrabold rounded-full py-3 w-1/2  my-5'>Book Now</button>
+                {/* Open the modal using document.getElementById('ID').showModal() method */}
+                <button className="bg-[#55AA39] text-white font-extrabold rounded-full py-3 w-1/2  my-5" onClick={() => document.getElementById('my_modal_1').showModal()}>Book Now</button>
+                <dialog id="my_modal_1" className="modal">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Hello!</h3>
+                        <div>
+                            <img src={image1} alt="" className='w-28 h-28 mx-auto' />
+                            <div className='flex justify-between gap-2'>
+                                <div className='w-1/2'>
+                                    <p>Service Name</p>
+                                    <p className='border-2 border-green-600 p-2'>{name}</p>
+                                </div>
+                                <div className='w-1/2'>
+                                    <p>Service Price</p>
+                                    <p className='border-2 border-green-600 p-2'>${price}</p>
+                                </div>
+                            </div>
+                            <div className='flex justify-between gap-2'>
+                                <div className='w-1/2'>
+                                    <p>Your Email</p>
+                                    <p className='border-2 border-green-600 p-2'>{name}</p>
+                                </div>
+                                <div className='w-1/2'>
+                                    <p>Service Provider Email</p>
+                                    <p className='border-2 border-green-600 p-2'>{service_provider_email}</p>
+                                </div>
+                            </div>
+                            <div className='flex justify-between gap-2'>
+                                <div className='w-1/2'>
+                                    <p>Service Taking Date</p>
+                                    <input type="date" name="" id="" className='border-2 border-green-600 p-2 w-full'/>
+                                </div>
+                                <div className='w-1/2'>
+                                    <p>Address</p>
+                                    <input type="text" name="" id="" placeholder='your location' className='border-2 border-green-600 p-2 w-full'/>
+                                </div>
+                            </div>
+                            <div>
+                            <button className="bg-[#55AA39] text-white font-extrabold rounded-full py-3 w-1/2  my-5">Book Now</button>
+
+                            </div>
+                        </div>
+                        <div className="modal-action">
+                            <form method="dialog">
+                                {/* if there is a button in form, it will close the modal */}
+                                <button className="btn">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
+
             </div>
         </div>
     );

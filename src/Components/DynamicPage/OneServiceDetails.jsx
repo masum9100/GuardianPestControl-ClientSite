@@ -6,7 +6,7 @@ import { AuthContext } from '../Hook/AuthProvider';
 
 const OneServiceDetails = () => {
 
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const service = useLoaderData()
 
@@ -16,11 +16,11 @@ const OneServiceDetails = () => {
         backgroundImage: `url(${image2})`,
     };
 
-    const handleBook = event =>{
+    const handleBook = event => {
         event.preventDefault()
 
-        const form = event.target 
-        const serviceName =form.service_name.value
+        const form = event.target
+        const serviceName = form.service_name.value
         const userEmail = form.user_email.value
         const price = form.price.value
         const serviceProEmail = form.service_pro_email.value
@@ -43,10 +43,14 @@ const OneServiceDetails = () => {
             body: JSON.stringify(booking)
 
         })
-        .then(res => res.json())
-        .then (data => {
-            console.log(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    alert("You Booked this Service Successfully")
+                    
+                }
+            })
     }
 
 
@@ -106,7 +110,7 @@ const OneServiceDetails = () => {
                                 </div>
                                 <div className='w-1/2 py-2'>
                                     <p className='text-left py-1'>Service Price (USD)</p>
-                                    <input className='border-2 border-green-600 p-2 w-full' type="text" id="" name="price" value={'$'+price} readonly></input>
+                                    <input className='border-2 border-green-600 p-2 w-full' type="text" id="" name="price" value={'$' + price} readonly></input>
                                 </div>
                             </div>
                             <div className='flex justify-between gap-2'>
@@ -122,11 +126,11 @@ const OneServiceDetails = () => {
                             <div className='flex justify-between gap-2'>
                                 <div className='w-1/2 py-2'>
                                     <p className='text-left py-1'>Service Taking Date</p>
-                                    <input type="date" name="date" id="" className='border-2 border-green-600 p-2 w-full' />
+                                    <input type="date" name="date" id="" className='border-2 border-green-600 p-2 w-full' required />
                                 </div>
                                 <div className='w-1/2 py-2'>
                                     <p className='text-left py-1'>Your Address</p>
-                                    <input type="text" name="location" id="" placeholder='your location' className='border-2 border-green-600 p-2 w-full' />
+                                    <input type="text" name="location" id="" placeholder='your location' className='border-2 border-green-600 p-2 w-full'  required/>
                                 </div>
                             </div>
                             <div>

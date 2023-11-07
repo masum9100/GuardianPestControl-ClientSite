@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Hook/AuthProvider';
 import TableBook from './TableBook';
+import cry from '../../../public/cry.gif'
 
 
 const BookingPage = () => {
@@ -20,7 +21,7 @@ const BookingPage = () => {
     }, [user.email, loading])
     console.log(user)
 
-   
+
 
     return (
         <div className='max-w-screen-xl mx-auto'>
@@ -34,31 +35,44 @@ const BookingPage = () => {
                 </div>
             </div>
             {/* table  */}
-            <div className="overflow-x-auto">
-                <table className="table table-xs">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Service Name</th>
-                            <th>Provider's Email </th>
-                            <th>Your Email</th>
-                            <th>Your Location</th>
-                            <th>Date</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        {
-                            bookings.map(booking => <TableBook>
-                                key={booking._id}
-                                booking={booking}
-                            </TableBook>)
-                        }
-                    </tbody>
-                    
-                </table>
-            </div>
+            {
+                bookings.length > 0 ? (
+                    <div className="overflow-x-auto">
+                        <table className="table table-xs mx-auto my-5">
+                            <thead>
+                                <tr>
+
+                                    <th>Service Name</th>
+                                    <th>Provider's Email </th>
+                                    <th>Your Email</th>
+                                    <th>Your Location</th>
+                                    <th>Date</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {
+                                    bookings.map(booking => <TableBook key={booking._id}
+                                        booking={booking}>
+
+                                    </TableBook>)
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                ) : (
+                    <div className="text-center my-5 relative">
+                        <img src={cry} alt="" className='mx-auto' />
+                        <div className='absolute bottom-10 left-0 right-0'>
+                            <p className='text-3xl font-bold text-yellow-600'>OPPS!</p>
+                        <p className='text-xl font-bold text-red-600'>You didn't booked any service yet</p>
+                        </div>
+
+                    </div>
+                )
+            }
         </div>
     );
 };

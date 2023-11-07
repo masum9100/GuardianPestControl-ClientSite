@@ -8,6 +8,7 @@ import AllService from '../Components/AllService';
 import OneServiceDetails from '../Components/DynamicPage/OneServiceDetails';
 import BookingPage from '../Components/DynamicPage/BookingPage';
 import PrivateRoute from '../Components/Hook/PrivateRoute';
+import ManageServices from '../Components/DynamicPage/ManageServices';
 
 const route = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const route = createBrowserRouter([
                 path:"/my-bookings",
                 element: <PrivateRoute><BookingPage></BookingPage></PrivateRoute>,
                 // loader: ({params})=> fetch(`http://localhost:5001/bookings?userEmail=${params.userEmail}`)
+            },
+            {
+                path: "/manage-services",
+                element: <PrivateRoute><ManageServices></ManageServices></PrivateRoute>
             }
         ]
     }

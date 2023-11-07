@@ -53,7 +53,7 @@ const NavBar = () => {
                             <NavLink to={"/"}><li><a>Home</a></li></NavLink>
                             <NavLink to={"/all-service"}><li><a>All Service</a></li></NavLink>
                             <li><a>FAQS</a></li>
-                            <li><a>Contact Us</a></li>
+                            {user && <NavLink to={"/manage-services"}><li><a>Manage Services</a></li></NavLink>}
                             {user && <li tabIndex={0}>
                                 <details>
                                     <summary>Dashboard</summary>
@@ -76,7 +76,7 @@ const NavBar = () => {
                         <NavLink to={"/"}><li><a>Home</a></li></NavLink>
                         <NavLink to={"/all-service"}><li><a>All Service</a></li></NavLink>
                         <li><a>FAQS</a></li>
-                        <li><a>Contact Us</a></li>
+                        {user && <NavLink to={"/manage-services"}><li><a>Manage Services</a></li></NavLink>}
                         {user && <li tabIndex={0}>
                             <details>
                                 <summary>Dashboard</summary>

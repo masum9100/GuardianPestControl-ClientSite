@@ -1,17 +1,19 @@
 import React from 'react';
 
 const TableBook = ({booking}) => {
-    const {} = booking;
+    console.log('Booking:', booking);
+    const {serviceName, userEmail, price, serviceProEmail, date, location} = booking;
     
     return (
-        <tr>
+        <tr className='bg-gray-200 py-2'>
             
-            <td></td>
-            <td>Quality Control Specialist</td>
-            <td>Littel, Schaden and Vandervort</td>
-            <td>Canada</td>
-            <td>12/16/2020</td>
-            <td>Blue</td>
+            <td>{serviceName}</td>
+            <td>{serviceProEmail}</td>
+            <td>{userEmail}</td>
+            <td>{location}</td>
+            <td>{date}</td>
+            <td>{price}</td>
+            
         </tr>
     );
 };

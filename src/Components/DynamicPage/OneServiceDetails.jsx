@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AiTwotoneMail } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
+import { AuthContext } from '../Hook/AuthProvider';
 
 const OneServiceDetails = () => {
+
+    const {user} = useContext(AuthContext)
 
     const service = useLoaderData()
 
@@ -12,6 +15,41 @@ const OneServiceDetails = () => {
     const heroStyle = {
         backgroundImage: `url(${image2})`,
     };
+
+    const handleBook = event =>{
+        event.preventDefault()
+
+        const form = event.target 
+        const serviceName =form.service_name.value
+        const userEmail = form.user_email.value
+        const price = form.price.value
+        const serviceProEmail = form.service_pro_email.value
+        const date = form.date.value
+        const location = form.location.value
+        const booking = {
+            serviceName,
+            userEmail,
+            price,
+            serviceProEmail,
+            date,
+            location
+        }
+        console.log(booking)
+        fetch('http://localhost:5001/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+
+        })
+        .then(res => res.json())
+        .then (data => {
+            console.log(data)
+        })
+    }
+
+
 
     return (
         <div className='max-w-screen-xl mx-auto mt-10'>
@@ -57,48 +95,49 @@ const OneServiceDetails = () => {
                 <button className="bg-[#55AA39] text-white font-extrabold rounded-full py-3 w-1/2  my-5" onClick={() => document.getElementById('my_modal_1').showModal()}>Book Now</button>
                 <dialog id="my_modal_1" className="modal">
                     <div className="modal-box">
-                        <h3 className="font-bold text-lg">Hello!</h3>
-                        <div>
+                        <h3 className="font-bold text-lg text-[#55AA39]">Hello!</h3>
+                        <form onSubmit={handleBook}>
                             <img src={image1} alt="" className='w-28 h-28 mx-auto' />
                             <div className='flex justify-between gap-2'>
-                                <div className='w-1/2'>
-                                    <p>Service Name</p>
-                                    <p className='border-2 border-green-600 p-2'>{name}</p>
+                                <div className='w-1/2 py-2'>
+                                    <p className='text-left py-1'>Service Name</p>
+
+                                    <input className='border-2 border-green-600 p-2 w-full' type="text" id="" name="service_name" value={name} readonly></input>
                                 </div>
-                                <div className='w-1/2'>
-                                    <p>Service Price</p>
-                                    <p className='border-2 border-green-600 p-2'>${price}</p>
-                                </div>
-                            </div>
-                            <div className='flex justify-between gap-2'>
-                                <div className='w-1/2'>
-                                    <p>Your Email</p>
-                                    <p className='border-2 border-green-600 p-2'>{name}</p>
-                                </div>
-                                <div className='w-1/2'>
-                                    <p>Service Provider Email</p>
-                                    <p className='border-2 border-green-600 p-2'>{service_provider_email}</p>
+                                <div className='w-1/2 py-2'>
+                                    <p className='text-left py-1'>Service Price (USD)</p>
+                                    <input className='border-2 border-green-600 p-2 w-full' type="text" id="" name="price" value={'$'+price} readonly></input>
                                 </div>
                             </div>
                             <div className='flex justify-between gap-2'>
-                                <div className='w-1/2'>
-                                    <p>Service Taking Date</p>
-                                    <input type="date" name="" id="" className='border-2 border-green-600 p-2 w-full'/>
+                                <div className='w-1/2 py-2'>
+                                    <p className='text-left py-1'>Your Email</p>
+                                    <input className='border-2 border-green-600 p-2 w-full' type="text" id="" name="user_email" value={user?.email} readonly></input>
                                 </div>
-                                <div className='w-1/2'>
-                                    <p>Address</p>
-                                    <input type="text" name="" id="" placeholder='your location' className='border-2 border-green-600 p-2 w-full'/>
+                                <div className='w-1/2 py-2'>
+                                    <p className='text-left py-1'>Service Provider Email</p>
+                                    <input className='border-2 border-green-600 p-2 w-full' type="text" id="" name="service_pro_email" value={service_provider_email} readonly></input>
+                                </div>
+                            </div>
+                            <div className='flex justify-between gap-2'>
+                                <div className='w-1/2 py-2'>
+                                    <p className='text-left py-1'>Service Taking Date</p>
+                                    <input type="date" name="date" id="" className='border-2 border-green-600 p-2 w-full' />
+                                </div>
+                                <div className='w-1/2 py-2'>
+                                    <p className='text-left py-1'>Your Address</p>
+                                    <input type="text" name="location" id="" placeholder='your location' className='border-2 border-green-600 p-2 w-full' />
                                 </div>
                             </div>
                             <div>
-                            <button className="bg-[#55AA39] text-white font-extrabold rounded-full py-3 w-1/2  my-5">Book Now</button>
+                                <input type="submit" value="CONFIRM" className="bg-[#55AA39] text-white font-bold rounded-full py-3 w-1/2  my-5" />
 
                             </div>
-                        </div>
+                        </form>
                         <div className="modal-action">
                             <form method="dialog">
                                 {/* if there is a button in form, it will close the modal */}
-                                <button className="btn">Close</button>
+                                <button className="btn btn-error">Close</button>
                             </form>
                         </div>
                     </div>

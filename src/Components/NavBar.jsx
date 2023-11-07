@@ -5,7 +5,7 @@ import { AuthContext } from './Hook/AuthProvider';
 
 const NavBar = () => {
 
-    const {user, logOut} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
     const handleTheme = (e) => {
@@ -55,15 +55,15 @@ const NavBar = () => {
                             <li><a>FAQS</a></li>
                             <li><a>Contact Us</a></li>
                             {user && <li tabIndex={0}>
-                            <details>
-                                <summary>Dashboard</summary>
-                                <ul className="p-2 w-40">
-                                    <li><a>My-services</a></li>
-                                    <li><a>Add-services</a></li>
-                                    <li><a>My-schedules</a></li>
-                                </ul>
-                            </details>
-                        </li>}
+                                <details>
+                                    <summary>Dashboard</summary>
+                                    <ul className="p-2 w-40">
+                                        <NavLink to={'/my-bookings'}><li><a>My-Booking</a></li></NavLink>
+                                        <li><a>Add-services</a></li>
+                                        <li><a>My-schedules</a></li>
+                                    </ul>
+                                </details>
+                            </li>}
 
                         </ul>
                     </div>
@@ -73,15 +73,15 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                    <NavLink to={"/"}><li><a>Home</a></li></NavLink>
-                    <NavLink to={"/all-service"}><li><a>All Service</a></li></NavLink>
+                        <NavLink to={"/"}><li><a>Home</a></li></NavLink>
+                        <NavLink to={"/all-service"}><li><a>All Service</a></li></NavLink>
                         <li><a>FAQS</a></li>
                         <li><a>Contact Us</a></li>
                         {user && <li tabIndex={0}>
                             <details>
                                 <summary>Dashboard</summary>
                                 <ul className="p-2 w-40">
-                                    <li><a>My-services</a></li>
+                                    <NavLink to={'/my-bookings'}><li><a>My-Booking</a></li></NavLink>
                                     <li><a>Add-services</a></li>
                                     <li><a>My-schedules</a></li>
                                 </ul>
@@ -91,13 +91,13 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                {user && <div className='grid grid-cols-1 justify-center'>
+                    {user && <div className='grid grid-cols-1 justify-center'>
                         <img className='w-8 rounded-full mx-auto' src={user?.photoURL} alt="user" />
                         <p className="mr-1 text-black">{user?.email}</p>
                     </div>}
                     {user && <button onClick={handleLogout} className="px-3 py-2 rounded-lg font-bold bg-[#55AA39] text-white hover:text-black">Log Out</button>}
                     {!user && <NavLink to="/login"><button className="px-3 py-2 rounded-lg font-bold bg-[#55AA39] text-white hover:text-black">LogIn</button></NavLink>}
-                    
+
                 </div>
             </div>
             <div className=" flex justify-center">

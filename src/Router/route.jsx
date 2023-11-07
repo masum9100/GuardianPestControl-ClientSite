@@ -6,6 +6,7 @@ import Login from '../Components/Login';
 import Registration from '../Components/Registration';
 import AllService from '../Components/AllService';
 import OneServiceDetails from '../Components/DynamicPage/OneServiceDetails';
+import BookingPage from '../Components/DynamicPage/BookingPage';
 
 const route = createBrowserRouter([
     {
@@ -32,7 +33,10 @@ const route = createBrowserRouter([
                 path: "/all-service/:id",
                 element: <OneServiceDetails></OneServiceDetails>,
                 loader: ({params})=> fetch(`http://localhost:5001/services/${params.id}`)
-                
+            },
+            {
+                path:"/my-bookings",
+                element: <BookingPage></BookingPage>
             }
         ]
     }

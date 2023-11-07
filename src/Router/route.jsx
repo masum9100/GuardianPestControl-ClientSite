@@ -9,6 +9,7 @@ import OneServiceDetails from '../Components/DynamicPage/OneServiceDetails';
 import BookingPage from '../Components/DynamicPage/BookingPage';
 import PrivateRoute from '../Components/Hook/PrivateRoute';
 import ManageServices from '../Components/DynamicPage/ManageServices';
+import AddService from '../Components/DynamicPage/AddService';
 
 const route = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const route = createBrowserRouter([
             {
                 path: "/manage-services",
                 element: <PrivateRoute><ManageServices></ManageServices></PrivateRoute>
+            },
+            {
+                path: "/add-services",
+                element: <PrivateRoute><AddService></AddService></PrivateRoute>
             }
         ]
     }

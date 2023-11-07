@@ -7,6 +7,7 @@ import Registration from '../Components/Registration';
 import AllService from '../Components/AllService';
 import OneServiceDetails from '../Components/DynamicPage/OneServiceDetails';
 import BookingPage from '../Components/DynamicPage/BookingPage';
+import PrivateRoute from '../Components/Hook/PrivateRoute';
 
 const route = createBrowserRouter([
     {
@@ -27,16 +28,17 @@ const route = createBrowserRouter([
             },
             {
                 path: "/all-service",
-                element: <AllService></AllService>
+                element: <PrivateRoute><AllService></AllService></PrivateRoute>
             },
             {
                 path: "/all-service/:id",
-                element: <OneServiceDetails></OneServiceDetails>,
+                element: <PrivateRoute><OneServiceDetails></OneServiceDetails></PrivateRoute>,
                 loader: ({params})=> fetch(`http://localhost:5001/services/${params.id}`)
             },
             {
                 path:"/my-bookings",
-                element: <BookingPage></BookingPage>
+                element: <PrivateRoute><BookingPage></BookingPage></PrivateRoute>,
+                loader: ({params})=> fetch(`http://localhost:5001/bookings?userEmail=${params.userEmail}`)
             }
         ]
     }

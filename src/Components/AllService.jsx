@@ -21,10 +21,10 @@ const AllService = () => {
     return (
         <div>
             <div className="hero my-5" style={{ backgroundImage: 'url(https://i.ibb.co/sbB3gnc/Artboard-1.jpg)' }}>
-                <div className="hero-overlay bg-opacity-90"></div>
+                <div className="hero-overlay bg-opacity-80"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="py-10">
-                        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+                        <h1 className="mb-5 text-3xl font-bold">Search for Specific Service</h1>
                         <form className='w-full' onSubmit={handleSearch}>
                             <input type="search" name="search" placeholder='Search here' id="" className='mb-5 mr-2 p-2 rounded-l-xl text-black' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
                             <input type="submit" value="Search"  className='text-white rounded-r-xl p-2 bg-[#55A839]'/>

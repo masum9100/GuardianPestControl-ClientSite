@@ -56,6 +56,8 @@ const OneServiceDetails = () => {
                         icon: 'success',
                         confirmButtonText: 'OKAY'
                     })
+                    const modal = document.getElementById('my_modal_1');
+                    modal.close();
                     // alert("You Booked this Service Successfully")
 
                 }
@@ -142,17 +144,12 @@ const OneServiceDetails = () => {
                                     <input type="text" name="location" id="" placeholder='your location' className='border-2 border-green-600 p-2 w-full' required />
                                 </div>
                             </div>
-                            <div>
+                            <div >
                                 <input type="submit" value="CONFIRM" className="bg-[#55AA39] text-white font-bold rounded-full py-3 w-1/2  my-5" />
 
                             </div>
                         </form>
-                        <div className="modal-action">
-                            <form method="dialog">
-                                {/* if there is a button in form, it will close the modal */}
-                                <button className="btn btn-error">Close</button>
-                            </form>
-                        </div>
+                        
                     </div>
                 </dialog>
 

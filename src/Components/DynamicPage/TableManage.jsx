@@ -24,7 +24,7 @@ const TableManage = ({ newservice }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5001/newservices/${_id}`, {
+                fetch(`https://agn11ssite.vercel.app/newservices/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

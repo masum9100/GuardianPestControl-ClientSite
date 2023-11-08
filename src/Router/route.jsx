@@ -12,6 +12,7 @@ import ManageServices from '../Components/DynamicPage/ManageServices';
 import AddService from '../Components/DynamicPage/AddService';
 import UpdateService from '../Components/DynamicPage/UpdateService';
 import MySchedual from '../Components/DynamicPage/MySchedual';
+import Faqs from '../Components/Faqs';
 
 const NotFound = () => {
     return (
@@ -46,7 +47,7 @@ const route = createBrowserRouter([
             {
                 path: "/all-service/:id",
                 element: <PrivateRoute><OneServiceDetails></OneServiceDetails></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5001/services/${params.id}`)
+                loader: ({params})=> fetch(`https://agn11ssite.vercel.app/services/${params.id}`)
             },
             {
                 path:"/my-bookings",
@@ -64,12 +65,17 @@ const route = createBrowserRouter([
             {
                 path: "/update-service/:id",
                 element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5001/newservices/${params.id}`)
+                loader: ({params}) => fetch(`https://agn11ssite.vercel.app/newservices/${params.id}`)
             },
             {
                 path: "/my-schedule",
                 element: <PrivateRoute><MySchedual></MySchedual></PrivateRoute>,
-                loader: () => fetch('http://localhost:5001/bookings')
+                loader: () => fetch('https://agn11ssite.vercel.app/bookings')
+            },
+            {
+                path: "/question-answer",
+                element: <Faqs></Faqs>
+
             },
             {
                 path: "*",

@@ -12,7 +12,7 @@ const BookingPage = () => {
 
     useEffect(() => {
         if (!loading) {
-            const url = `http://localhost:5001/bookings?userEmail=${user.email}`
+            const url = `https://agn11ssite.vercel.app/bookings?userEmail=${user.email}`
             fetch(url)
                 .then(res => res.json())
                 .then(data => setBookings(data))

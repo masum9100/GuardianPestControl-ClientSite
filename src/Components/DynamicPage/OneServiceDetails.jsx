@@ -38,7 +38,7 @@ const OneServiceDetails = () => {
             location
         }
         console.log(booking)
-        fetch('http://localhost:5001/bookings', {
+        fetch('https://agn11ssite.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -9,7 +9,7 @@ const ManageServices = () => {
 
     useEffect(() => {
         if (!loading) {
-            const url = `http://localhost:5001/newservices?user_email=${user.email}`
+            const url = `https://agn11ssite.vercel.app/newservices?user_email=${user.email}`
             fetch(url)
                 .then(res => res.json())
                 .then(data => setNewservices(data))

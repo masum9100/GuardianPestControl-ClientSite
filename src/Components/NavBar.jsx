@@ -52,7 +52,7 @@ const NavBar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <NavLink to={"/"}><li><a>Home</a></li></NavLink>
                             <NavLink to={"/all-service"}><li><a>All Service</a></li></NavLink>
-                            <li><a>FAQS</a></li>
+                            <NavLink to={"/question-answer"}><li><a>FAQS</a></li></NavLink>
                             {user && <NavLink to={"/manage-services"}><li><a>Manage Services</a></li></NavLink>}
                             {user && <li tabIndex={0}>
                                 <details>
@@ -75,7 +75,7 @@ const NavBar = () => {
                     <ul className="menu menu-horizontal px-1">
                         <NavLink to={"/"}><li><a>Home</a></li></NavLink>
                         <NavLink to={"/all-service"}><li><a>All Service</a></li></NavLink>
-                        <li><a>FAQS</a></li>
+                        <NavLink to={"/question-answer"}><li><a>FAQS</a></li></NavLink>
                         {user && <NavLink to={"/manage-services"}><li><a>Manage Services</a></li></NavLink>}
                         {user && <li tabIndex={0}>
                             <details>

@@ -7,7 +7,7 @@ const AllService = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5001/services')
+        fetch('https://agn11ssite.vercel.app/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

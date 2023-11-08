@@ -3,9 +3,43 @@ import { AiTwotoneMail } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { AiFillDelete } from "react-icons/ai";
 import { AiFillEdit } from "react-icons/ai";
+import Swal from 'sweetalert2'
+import { NavLink } from 'react-router-dom';
 
 const TableManage = ({ newservice }) => {
-    const { serviceName, price, userName, user_email, photo_url, description, location } = newservice
+    const { _id, serviceName, price, userName, user_email, photo_url, description, location } = newservice
+
+    const handleDelete = _id => {
+        console.log(_id)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5001/newservices/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount > 0) {
+                              Swal.fire({
+                                title: "Deleted!",
+                                text: "Your service has been deleted.",
+                                icon: "success"
+                              });
+                        }
+                    })
+            }
+        });
+    }
+
     return (
         <div>
             <div className="card w-96 bg-base-200 shadow-xl">
@@ -32,10 +66,14 @@ const TableManage = ({ newservice }) => {
                     <p className='font-medium text-center py-1 mt-1'>Price ${price}</p>
                     <div className='flex justify-center gap-5'>
                         <div>
-                            <button className='text-3xl text-red-700'><AiFillDelete></AiFillDelete></button>
+                            <button
+                                onClick={() => handleDelete(_id)}
+                                className='text-3xl text-red-700'><AiFillDelete></AiFillDelete></button>
                         </div>
                         <div>
+                            <NavLink to={`update-service/${_id}`}>
                             <button className='text-3xl text-yellow-600'><AiFillEdit></AiFillEdit></button>
+                            </NavLink>
                         </div>
 
                     </div>

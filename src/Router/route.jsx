@@ -10,6 +10,7 @@ import BookingPage from '../Components/DynamicPage/BookingPage';
 import PrivateRoute from '../Components/Hook/PrivateRoute';
 import ManageServices from '../Components/DynamicPage/ManageServices';
 import AddService from '../Components/DynamicPage/AddService';
+import UpdateService from '../Components/DynamicPage/UpdateService';
 
 const route = createBrowserRouter([
     {
@@ -30,7 +31,7 @@ const route = createBrowserRouter([
             },
             {
                 path: "/all-service",
-                element: <PrivateRoute><AllService></AllService></PrivateRoute>
+                element: <AllService></AllService>
             },
             {
                 path: "/all-service/:id",
@@ -49,6 +50,11 @@ const route = createBrowserRouter([
             {
                 path: "/add-services",
                 element: <PrivateRoute><AddService></AddService></PrivateRoute>
+            },
+            {
+                path: "/update-service/:id",
+                element: <PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5001/newservices/${params.id}`)
             }
         ]
     }

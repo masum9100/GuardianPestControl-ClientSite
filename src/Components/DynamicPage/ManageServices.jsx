@@ -28,7 +28,7 @@ const ManageServices = () => {
             </div>
             {
                 newservices.length > 0 ? (
-                    <div>
+                    <div className='grid grid-flow-col'>
                         {
                             newservices.map(newservice => <TableManage
                                 key={newservice._id} newservice={newservice}></TableManage>)

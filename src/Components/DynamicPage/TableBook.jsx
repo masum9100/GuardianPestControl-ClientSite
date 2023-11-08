@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TableBook = ({booking}) => {
-    console.log('Booking:', booking);
+    
     const {serviceName, userEmail, price, serviceProEmail, date, location} = booking;
     
     return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiTwotoneMail } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { AiFillDelete } from "react-icons/ai";
@@ -8,6 +8,8 @@ import { NavLink } from 'react-router-dom';
 
 const TableManage = ({ newservice }) => {
     const { _id, serviceName, price, userName, user_email, photo_url, description, location } = newservice
+
+    const [deleted, setDeleted]= useState(false)
 
     const handleDelete = _id => {
         console.log(_id)
@@ -29,6 +31,7 @@ const TableManage = ({ newservice }) => {
                     .then(data => {
                         console.log(data)
                         if (data.deletedCount > 0) {
+                            setDeleted(true)
                               Swal.fire({
                                 title: "Deleted!",
                                 text: "Your service has been deleted.",
@@ -42,7 +45,9 @@ const TableManage = ({ newservice }) => {
 
     return (
         <div>
-            <div className="card w-96 bg-base-200 shadow-xl">
+            {
+                deleted ? null : (
+                    <div className="card w-96 bg-base-200 shadow-xl">
                 <figure><img src={photo_url} alt="Shoes" className='w-48' /></figure>
                 <div className="card-body">
                     <h2 className="card-title mx-auto text-2xl text-[#55A839] font-bold mt-1">{serviceName}</h2>
@@ -79,6 +84,8 @@ const TableManage = ({ newservice }) => {
                     </div>
                 </div>
             </div>
+                )
+            }
         </div>
     );
 };

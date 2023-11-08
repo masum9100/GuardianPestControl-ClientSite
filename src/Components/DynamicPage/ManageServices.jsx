@@ -36,11 +36,11 @@ const ManageServices = () => {
                         }
                     </div>
                 ) : (
-                    <div className="text-center my-5 relative">
+                    <div className="text-center my-5 =">
                         {/* <img src={cry} alt="" className='mx-auto' /> */}
-                        <div className='absolute bottom-10 left-0 right-0'>
+                        <div className=''>
                             <p className='text-3xl font-bold text-yellow-600'>OPPS!</p>
-                            <p className='text-xl font-bold text-red-300'>You didn't booked any service yet</p>
+                            <p className='text-xl font-bold text-red-300'>You didn't Uploaded any services yet</p>
                         </div>
 
                     </div>

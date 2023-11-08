@@ -9,7 +9,6 @@ import 'swiper/css/navigation';
 
 import './styles.css';
 
-// import required modules
 import { Pagination, Navigation } from 'swiper/modules';
 
 const Banner = () => {

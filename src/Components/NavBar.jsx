@@ -60,7 +60,7 @@ const NavBar = () => {
                                     <ul className="p-2 w-40">
                                         <NavLink to={'/my-bookings'}><li><a>My-Booking</a></li></NavLink>
                                         <NavLink to={"/add-services"}><li><a>Add-services</a></li></NavLink>
-                                        <li><a>My-schedules</a></li>
+                                        <NavLink to={"/my-schedule"}><li><a>My-schedules</a></li></NavLink>
                                     </ul>
                                 </details>
                             </li>}
@@ -83,7 +83,7 @@ const NavBar = () => {
                                 <ul className="p-2 w-40">
                                     <NavLink to={`/my-bookings`}><li><a>My-Booking</a></li></NavLink>
                                     <NavLink to={"/add-services"}><li><a>Add-services</a></li></NavLink>
-                                    <li><a>My-schedules</a></li>
+                                    <NavLink to={"/my-schedule"}><li><a>My-schedules</a></li></NavLink>
                                 </ul>
                             </details>
                         </li>}

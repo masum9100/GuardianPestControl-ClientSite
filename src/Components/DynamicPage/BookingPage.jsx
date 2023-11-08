@@ -19,7 +19,7 @@ const BookingPage = () => {
         }
 
     }, [user.email, loading])
-    console.log(user)
+    
 
 
 

@@ -1,8 +1,46 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Hook/AuthProvider';
+import Swal from 'sweetalert2'
 
 const AddService = () => {
+
     const { user } = useContext(AuthContext)
+
+    const handleAddService = event =>{
+        event.preventDefault()
+        const form = event.target
+        const serviceName = form.service_name.value
+        const price = form.price.value
+        const userName = form.user_name.value
+        const user_email = form.user_email.value
+        const photo_url = form.photo_url.value
+        const description = form.description.value
+        const location = form.location.value
+        
+        const newServices = {serviceName, price, userName, user_email, photo_url, description, location}
+        console.log(newServices)
+
+        fetch('http://localhost:5001/newservices', {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(newServices)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if (data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Service Added Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OKAY'
+                })
+            }
+        })
+    }
+    
     return (
         <div className='max-w-screen-xl mx-auto py-10'>
             <div className="hero" style={{ backgroundImage: 'url(https://i.ibb.co/92zTymZ/3banner.jpg)' }}>
@@ -15,7 +53,7 @@ const AddService = () => {
             </div>
             
             <div className='my-4 h-2 bg-[#55AA39] w-3/4 mx-auto'></div>
-            <form>
+            <form onSubmit={handleAddService}>
                 <div className='grid gap-7'>
                     <div className='w-full md:w-3/4 mx-auto'>
                         <div className='grid justify-center md:flex lg:justify-between gap-3'>

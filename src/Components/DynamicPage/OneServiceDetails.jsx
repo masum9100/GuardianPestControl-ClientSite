@@ -3,6 +3,9 @@ import { useLoaderData } from 'react-router-dom';
 import { AiTwotoneMail } from "react-icons/ai";
 import { FaLocationDot } from "react-icons/fa6";
 import { AuthContext } from '../Hook/AuthProvider';
+import Swal from 'sweetalert2';
+import AllService from '../AllService';
+import HomeService from '../HomeService';
 
 const OneServiceDetails = () => {
 
@@ -47,8 +50,14 @@ const OneServiceDetails = () => {
             .then(data => {
                 console.log(data)
                 if (data.insertedId) {
-                    alert("You Booked this Service Successfully")
-                    
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'You Booked this Service Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OKAY'
+                    })
+                    // alert("You Booked this Service Successfully")
+
                 }
             })
     }
@@ -130,7 +139,7 @@ const OneServiceDetails = () => {
                                 </div>
                                 <div className='w-1/2 py-2'>
                                     <p className='text-left py-1'>Your Address</p>
-                                    <input type="text" name="location" id="" placeholder='your location' className='border-2 border-green-600 p-2 w-full'  required/>
+                                    <input type="text" name="location" id="" placeholder='your location' className='border-2 border-green-600 p-2 w-full' required />
                                 </div>
                             </div>
                             <div>
@@ -148,6 +157,14 @@ const OneServiceDetails = () => {
                 </dialog>
 
             </div>
+            {/* other service */}
+            <div>
+                <div className='border-2 border-green-600 md:w-1/2 mt-5 mx-auto rounded-lg'></div>
+                <p className='text-3xl text-[#55AA39] font-bold text-center my-5'>Check Our Other Services</p>
+                <div className='border-2 border-green-600 md:w-1/2 mx-auto rounded-lg mb-5'></div>
+                <HomeService></HomeService>
+            </div>
+
         </div>
     );
 };

@@ -71,7 +71,7 @@ const TableManage = ({ newservice }) => {
                                 className='text-3xl text-red-700'><AiFillDelete></AiFillDelete></button>
                         </div>
                         <div>
-                            <NavLink to={`update-service/${_id}`}>
+                            <NavLink to={`/update-service/${_id}`}>
                             <button className='text-3xl text-yellow-600'><AiFillEdit></AiFillEdit></button>
                             </NavLink>
                         </div>

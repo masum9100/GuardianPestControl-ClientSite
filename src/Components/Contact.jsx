@@ -1,26 +1,72 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { FaLocationDot } from "react-icons/fa6";
 import { FaRegClock } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa6";
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
+const AnimationsForChaining = ["swing", "flipSlowDown", "fadeOutToBottom", "jelly", "bounce"]
+import MovingText from 'react-moving-text'
 
 const Contact = () => {
+    const form = useRef();
+    const [animationIndex, setAnimationIndex] = useState(0)
+    const [animationType, setAnimationType] = useState(AnimationsForChaining[0])
+
+    const handleChainAnimation = () => {
+        setCounter(animationIndex + 1)
+        setAnimationType(selectedItems[animationIndex + 1])
+    }
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_l1lszv5', 'template_wkiaozd', form.current, 'F2J_LmosuCBHU4xae')
+            .then((result) => {
+                console.log(result.text);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Thanks For Your Message",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                form.current.reset();
+            }, (error) => {
+                console.log(error.text);
+
+            });
+    };
     return (
         <div className='max-w-screen-xl mx-auto grid md:flex gap-2'>
             <div className='w-full md:w-1/2 p-5'>
-                <p className='text-3xl text-[#55A839] font-bold mb-16'>Request a quote</p>
-                <div className='flex mb-10 text-xl'>
-                    <input type="text" placeholder='First Name' className='w-1/2 border-b-2 border-green-600 mr-4' />
-                    <input type="text" placeholder='Last Name' className='w-1/2 border-b-2 border-green-600' />
-                </div>
-                <div className='flex mb-10 text-xl'>
-                    <input type="text" placeholder='Phone Number' className='w-1/2 border-b-2 border-green-600 mr-4' />
-                    <input type="text" placeholder='Email' className='w-1/2 border-b-2 border-green-600' />
-                </div>
-                <div className='grid'>
-                    <input type="text" name="" id="" placeholder='Full Address' className='border-b-2 border-green-600 mb-10 text-xl' />
-                    <input type="text" name="" id="" placeholder='Short Description of Problem Experienced' className='border-b-2 border-green-600 text-xl' />
-                </div>
-                <button className='px-3 py-2 rounded-full font-bold bg-[#55AA39] text-white mt-16'>SENT REQUEST</button>
+            <MovingText
+                        onAnimationEnd={handleChainAnimation}
+                        type="bounce"
+                        duration="5000ms"
+                        timing="linear"
+                        iteration={1}>
+                        <p className='text-3xl text-[#55A839] font-bold mb-16'>Request a quote</p>
+                    </MovingText>
+                
+                <form ref={form} onSubmit={sendEmail}>
+                    <div className='flex mb-10 text-xl'>
+                        <input type="text" name='user_name' placeholder='First Name' className='w-1/2 border-b-2 border-green-600 mr-4' />
+                        <input type="text" placeholder='Last Name' className='w-1/2 border-b-2 border-green-600' />
+                    </div>
+                    <div className='flex mb-10 text-xl'>
+                        <input type="text" placeholder='Phone Number' className='w-1/2 border-b-2 border-green-600 mr-4' />
+                        <input type="text" name='user_email' placeholder='Email' className='w-1/2 border-b-2 border-green-600' />
+                    </div>
+                    <div className='grid'>
+                        <input type="text" name="" id="" placeholder='Full Address' className='border-b-2 border-green-600 mb-10 text-xl' />
+                        <input type="text" name="message" id="" placeholder='Short Description of Problem Experienced' className='border-b-2 border-green-600 text-xl' />
+                    </div>
+                    <input type="submit" value="SENT REQUEST" className='px-3 py-2 rounded-full font-bold bg-[#55AA39] text-white mt-16' />
+                </form>
+
+
+
+
             </div>
             <div className='w-full md:w-1/2 bg-[#333333] p-5'>
                 <p className='text-3xl text-white font-bold mb-10'>Contact Details</p>
